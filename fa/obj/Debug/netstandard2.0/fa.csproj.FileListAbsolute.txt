@@ -6,3 +6,14 @@
 /Users/anton/Desktop/NET/mod-task02-fa/fa/obj/Debug/netstandard2.0/fa.AssemblyInfo.cs
 /Users/anton/Desktop/NET/mod-task02-fa/fa/obj/Debug/netstandard2.0/fa.dll
 /Users/anton/Desktop/NET/mod-task02-fa/fa/obj/Debug/netstandard2.0/fa.pdb
+/Users/egorlogutov/Desktop/Github/mod-lab02-fa-csharp/fa/bin/Debug/netstandard2.0/fa.deps.json
+/Users/egorlogutov/Desktop/Github/mod-lab02-fa-csharp/fa/bin/Debug/netstandard2.0/fa.dll
+/Users/egorlogutov/Desktop/Github/mod-lab02-fa-csharp/fa/bin/Debug/netstandard2.0/fa.pdb
+/Users/egorlogutov/Desktop/Github/mod-lab02-fa-csharp/fa/obj/Debug/netstandard2.0/fa.csproj.AssemblyReference.cache
+/Users/egorlogutov/Desktop/Github/mod-lab02-fa-csharp/fa/obj/Debug/netstandard2.0/fa.GeneratedMSBuildEditorConfig.editorconfig
+/Users/egorlogutov/Desktop/Github/mod-lab02-fa-csharp/fa/obj/Debug/netstandard2.0/fa.AssemblyInfoInputs.cache
+/Users/egorlogutov/Desktop/Github/mod-lab02-fa-csharp/fa/obj/Debug/netstandard2.0/fa.AssemblyInfo.cs
+/Users/egorlogutov/Desktop/Github/mod-lab02-fa-csharp/fa/obj/Debug/netstandard2.0/fa.csproj.CoreCompileInputs.cache
+/Users/egorlogutov/Desktop/Github/mod-lab02-fa-csharp/fa/obj/Debug/netstandard2.0/fa.sourcelink.json
+/Users/egorlogutov/Desktop/Github/mod-lab02-fa-csharp/fa/obj/Debug/netstandard2.0/fa.dll
+/Users/egorlogutov/Desktop/Github/mod-lab02-fa-csharp/fa/obj/Debug/netstandard2.0/fa.pdb
