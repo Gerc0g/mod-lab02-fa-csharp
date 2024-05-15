@@ -178,14 +178,14 @@ namespace fans
 
         public FA3()
         {
-            one.Transitions['0'] = two;
-            one.Transitions['1'] = thre;
+            one.Transitions['0'] = one;
+            one.Transitions['1'] = two;
 
             two.Transitions['0'] = one;
             two.Transitions['1'] = thre;
 
-            thre.Transitions['0'] = one;
-            thre.Transitions['1'] = finish;
+            thre.Transitions['0'] = finish;
+            thre.Transitions['1'] = thre;
 
             finish.Transitions['0'] = finish;
             finish.Transitions['1'] = finish;
