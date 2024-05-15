@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace fans
 {
@@ -15,7 +13,6 @@ namespace fans
 
     public class FA1
     {
-
         private readonly State initialState;
 
         public FA1()
@@ -42,18 +39,30 @@ namespace fans
             finish.Transitions['1'] = finish;
 
             initialState = one;
-
         }
 
         public bool? Run(IEnumerable<char> s)
         {
             State current = initialState;
-            return s.All(c => current.Transitions.ContainsKey(c)) && current.IsAcceptState? true : (bool?)null;
+            foreach (var c in s)
+            {
+                if (current.Transitions.ContainsKey(c))
+                {
+                    current = current.Transitions[c];
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return current.IsAcceptState;
         }
     }
 
     public class FA2
     {
+        private readonly State initialState;
+
         public static State one = new State()
         {
             Name = "первое",
@@ -79,8 +88,6 @@ namespace fans
             Transitions = new Dictionary<char, State>()
         };
 
-        State InitialState = one;
-
         public FA2()
         {
             one.Transitions['0'] = two;
@@ -94,18 +101,32 @@ namespace fans
 
             finish.Transitions['0'] = thre;
             finish.Transitions['1'] = two;
+
+            initialState = one;
         }
 
         public bool? Run(IEnumerable<char> s)
         {
-            State current = InitialState;
-            return s.All(c => current.Transitions.ContainsKey(c)) && current.IsAcceptState? true : (bool?)null;
-
+            State current = initialState;
+            foreach (var c in s)
+            {
+                if (current.Transitions.ContainsKey(c))
+                {
+                    current = current.Transitions[c];
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return current.IsAcceptState;
         }
     }
 
     public class FA3
     {
+        private readonly State initialState;
+
         public static State one = new State()
         {
             Name = "первое",
@@ -132,8 +153,6 @@ namespace fans
             Transitions = new Dictionary<char, State>()
         };
 
-        State InitialState = one;
-
         public FA3()
         {
             one.Transitions['0'] = two;
@@ -147,13 +166,25 @@ namespace fans
 
             finish.Transitions['0'] = finish;
             finish.Transitions['1'] = finish;
+
+            initialState = one;
         }
 
         public bool? Run(IEnumerable<char> s)
         {
-            State current = InitialState;
-            return s.All(c => current.Transitions.ContainsKey(c)) && current.IsAcceptState? true : (bool?)null;
-
+            State current = initialState;
+            foreach (var c in s)
+            {
+                if (current.Transitions.ContainsKey(c))
+                {
+                    current = current.Transitions[c];
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return current.IsAcceptState;
         }
     }
 
