@@ -62,10 +62,17 @@ namespace fans
             State current = InitialState;
             foreach (var c in s)
             {
-                if (!current.Transitions.ContainsKey(c))
-                    return null;
-                current = current.Transitions[c];
+                if (current.Transitions.TryGetValue(c, out var nextState))
+                {
+                    current = nextState;
+                }
+                else
+                {
+                    // Если символ не найден, переходим к следующему символу, не прерывая цикл
+                    continue;
+                }
             }
+            // Возвращаем состояние, является ли оно принимающим
             return current.IsAcceptState;
         }
     }
