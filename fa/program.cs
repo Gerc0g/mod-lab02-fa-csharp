@@ -145,7 +145,6 @@ namespace fans
             IsAcceptState = true,
             Transitions = new Dictionary<char, State>()
         };
-
         public static State finish = new State()
         {
             Name = "финишное",
