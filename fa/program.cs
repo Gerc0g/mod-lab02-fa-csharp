@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection.Emit;
 
 namespace fans
 {
@@ -47,19 +48,19 @@ namespace fans
         public FA1()
         {
 
-            one.Transitions['0'] = two;
-            one.Transitions['1'] = three;
+            one.Transitions['0'] = three;
+            one.Transitions['1'] = two;
 
             two.Transitions['0'] = four;
-            two.Transitions['1'] = finish;
+            two.Transitions['1'] = two;
 
             three.Transitions['0'] = finish;
-            three.Transitions['1'] = three;
+            three.Transitions['1'] = four;
 
-            four.Transitions['0'] = four;
+            four.Transitions['0'] = finish;
             four.Transitions['1'] = four;
 
-            finish.Transitions['0'] = four;
+            finish.Transitions['0'] = finish;
             finish.Transitions['1'] = finish;
 
         }
