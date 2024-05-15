@@ -15,46 +15,57 @@ namespace fans
 
     public class FA1
     {
-        public static State start = new State()
+        public static State one = new State()
         {
-            Name = "start",
+            Name = "первое",
             IsAcceptState = false,
             Transitions = new Dictionary<char, State>()
         };
-        public static State oneZero = new State()
+        public static State two = new State()
         {
-            Name = "oneZero",
+            Name = "второе",
             IsAcceptState = false,
             Transitions = new Dictionary<char, State>()
         };
-        public static State oneZeroOne = new State()
+        public static State thre = new State()
         {
-            Name = "oneZeroOne",
+            Name = "третье",
+            IsAcceptState = false,
+            Transitions = new Dictionary<char, State>()
+        };
+        public static State four = new State()
+        {
+            Name = "четвертое",
             IsAcceptState = true,
             Transitions = new Dictionary<char, State>()
         };
-        public static State invalid = new State()
+
+        public static State finish = new State()
         {
-            Name = "invalid",
-            IsAcceptState = false,
+            Name = "конечное",
+            IsAcceptState = true,
             Transitions = new Dictionary<char, State>()
         };
 
-        State InitialState = start;
+        State InitialState = one;
 
         public FA1()
         {
-            start.Transitions['0'] = oneZero;
-            start.Transitions['1'] = start;
 
-            oneZero.Transitions['0'] = invalid;
-            oneZero.Transitions['1'] = oneZeroOne;
+            one.Transitions['0'] = two;
+            one.Transitions['1'] = thre;
 
-            oneZeroOne.Transitions['0'] = invalid;
-            oneZeroOne.Transitions['1'] = oneZeroOne;
+            two.Transitions['0'] = four;
+            two.Transitions['1'] = finish;
 
-            invalid.Transitions['0'] = invalid;
-            invalid.Transitions['1'] = invalid;
+            thre.Transitions['0'] = finish;
+            thre.Transitions['1'] = thre;
+
+            four.Transitions['0'] = four;
+            four.Transitions['1'] = four;
+
+            finish.Transitions['0'] = four;
+            finish.Transitions['1'] = finish;
         }
 
         public bool? Run(IEnumerable<char> s)
@@ -62,17 +73,10 @@ namespace fans
             State current = InitialState;
             foreach (var c in s)
             {
-                if (current.Transitions.TryGetValue(c, out var nextState))
-                {
-                    current = nextState;
-                }
-                else
-                {
-                    // Если символ не найден, переходим к следующему символу, не прерывая цикл
-                    continue;
-                }
+                if (!current.Transitions.ContainsKey(c))
+                    return null;
+                current = current.Transitions[c];
             }
-            // Возвращаем состояние, является ли оно принимающим
             return current.IsAcceptState;
         }
     }
