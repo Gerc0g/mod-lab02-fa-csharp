@@ -33,13 +33,13 @@ namespace fans
         public State four = new State()
         {
             Name = "четвертое",
-            IsAcceptState = false,
+            IsAcceptState = true,
             Transitions = new Dictionary<char, State>()
         };
         public State finish = new State()
         {
             Name = "конечное",
-            IsAcceptState = true,
+            IsAcceptState = false,
             Transitions = new Dictionary<char, State>()
         };
 
