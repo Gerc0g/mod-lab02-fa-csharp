@@ -71,13 +71,7 @@ namespace fans
         public bool? Run(IEnumerable<char> s)
         {
             State current = InitialState;
-            foreach (var c in s)
-            {
-                if (!current.Transitions.ContainsKey(c))
-                    return null;
-                current = current.Transitions[c];
-            }
-            return current.IsAcceptState;
+            return s.All(c => current.Transitions.ContainsKey(c)) && current.IsAcceptState? true : (bool?)null;
         }
     }
 
@@ -128,13 +122,8 @@ namespace fans
         public bool? Run(IEnumerable<char> s)
         {
             State current = InitialState;
-            foreach (var c in s)
-            {
-                if (!current.Transitions.ContainsKey(c))
-                    return null;
-                current = current.Transitions[c];
-            }
-            return current.IsAcceptState;
+            return s.All(c => current.Transitions.ContainsKey(c)) && current.IsAcceptState? true : (bool?)null;
+
         }
     }
 
@@ -186,13 +175,8 @@ namespace fans
         public bool? Run(IEnumerable<char> s)
         {
             State current = InitialState;
-            foreach (var c in s)
-            {
-                if (!current.Transitions.ContainsKey(c))
-                    return null;
-                current = current.Transitions[c];
-            }
-            return current.IsAcceptState;
+            return s.All(c => current.Transitions.ContainsKey(c)) && current.IsAcceptState? true : (bool?)null;
+
         }
     }
 
