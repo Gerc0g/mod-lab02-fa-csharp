@@ -12,15 +12,40 @@ namespace fans
 
     public class FA1
     {
-        private readonly State initialState;
+        public static State one = new State()
+        {
+            Name = "первое",
+            IsAcceptState = false,
+            Transitions = new Dictionary<char, State>()
+        };
+        public State two = new State()
+        {
+            Name = "второе",
+            IsAcceptState = false,
+            Transitions = new Dictionary<char, State>()
+        };
+        public State three = new State()
+        {
+            Name = "третье",
+            IsAcceptState = false,
+            Transitions = new Dictionary<char, State>()
+        };
+        public State four = new State()
+        {
+            Name = "четвертое",
+            IsAcceptState = false,
+            Transitions = new Dictionary<char, State>()
+        };
+        public State finish = new State()
+        {
+            Name = "конечное",
+            IsAcceptState = true,
+            Transitions = new Dictionary<char, State>()
+        };
 
+        State InitialState = one;
         public FA1()
         {
-            var one = new State { Name = "первое", IsAcceptState = false, Transitions = new Dictionary<char, State>() };
-            var two = new State { Name = "второе", IsAcceptState = false, Transitions = new Dictionary<char, State>() };
-            var three = new State { Name = "третье", IsAcceptState = false, Transitions = new Dictionary<char, State>() };
-            var four = new State { Name = "четвертое", IsAcceptState = true, Transitions = new Dictionary<char, State>() };
-            var finish = new State { Name = "конечное", IsAcceptState = true, Transitions = new Dictionary<char, State>() };
 
             one.Transitions['0'] = two;
             one.Transitions['1'] = three;
@@ -37,12 +62,11 @@ namespace fans
             finish.Transitions['0'] = four;
             finish.Transitions['1'] = finish;
 
-            initialState = one;
         }
 
         public bool? Run(IEnumerable<char> s)
         {
-            State current = initialState;
+            State current = InitialState;
             foreach (var c in s)
             {
                 if (current.Transitions.ContainsKey(c))
