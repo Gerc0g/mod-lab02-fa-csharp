@@ -83,46 +83,46 @@ namespace fans
 
     public class FA2
     {
-        public static State evenZerosEvenOnes = new State()
+        public static State one = new State()
         {
-            Name = "evenZerosEvenOnes",
+            Name = "первое",
             IsAcceptState = false,
             Transitions = new Dictionary<char, State>()
         };
-        public static State oddZerosEvenOnes = new State()
+        public static State two = new State()
         {
-            Name = "oddZerosEvenOnes",
+            Name = "второе",
             IsAcceptState = false,
             Transitions = new Dictionary<char, State>()
         };
-        public static State evenZerosOddOnes = new State()
+        public static State thre = new State()
         {
-            Name = "evenZerosOddOnes",
+            Name = "третье",
             IsAcceptState = false,
             Transitions = new Dictionary<char, State>()
         };
-        public static State oddZerosOddOnes = new State()
+        public static State finish = new State()
         {
-            Name = "oddZerosOddOnes",
+            Name = "конечное",
             IsAcceptState = true,
             Transitions = new Dictionary<char, State>()
         };
 
-        State InitialState = evenZerosEvenOnes;
+        State InitialState = one;
 
         public FA2()
         {
-            evenZerosEvenOnes.Transitions['0'] = oddZerosEvenOnes;
-            evenZerosEvenOnes.Transitions['1'] = evenZerosOddOnes;
+            one.Transitions['0'] = two;
+            one.Transitions['1'] = thre;
 
-            oddZerosEvenOnes.Transitions['0'] = evenZerosEvenOnes;
-            oddZerosEvenOnes.Transitions['1'] = oddZerosOddOnes;
+            two.Transitions['0'] = one;
+            two.Transitions['1'] = finish;
 
-            evenZerosOddOnes.Transitions['0'] = oddZerosOddOnes;
-            evenZerosOddOnes.Transitions['1'] = evenZerosEvenOnes;
+            thre.Transitions['0'] = finish;
+            thre.Transitions['1'] = one;
 
-            oddZerosOddOnes.Transitions['0'] = evenZerosOddOnes;
-            oddZerosOddOnes.Transitions['1'] = oddZerosEvenOnes;
+            finish.Transitions['0'] = thre;
+            finish.Transitions['1'] = two;
         }
 
         public bool? Run(IEnumerable<char> s)
@@ -140,37 +140,47 @@ namespace fans
 
     public class FA3
     {
-        public static State start = new State()
+        public static State one = new State()
         {
-            Name = "start",
+            Name = "первое",
             IsAcceptState = false,
             Transitions = new Dictionary<char, State>()
         };
-        public static State seenOne = new State()
+        public static State two = new State()
         {
-            Name = "seenOne",
+            Name = "второе",
             IsAcceptState = false,
             Transitions = new Dictionary<char, State>()
         };
-        public static State seenTwoOnes = new State()
+        public static State thre = new State()
         {
-            Name = "seenTwoOnes",
+            Name = "третье",
             IsAcceptState = true,
             Transitions = new Dictionary<char, State>()
         };
 
-        State InitialState = start;
+        public static State finish = new State()
+        {
+            Name = "финишное",
+            IsAcceptState = true,
+            Transitions = new Dictionary<char, State>()
+        };
+
+        State InitialState = one;
 
         public FA3()
         {
-            start.Transitions['0'] = start;
-            start.Transitions['1'] = seenOne;
+            one.Transitions['0'] = two;
+            one.Transitions['1'] = thre;
 
-            seenOne.Transitions['0'] = start;
-            seenOne.Transitions['1'] = seenTwoOnes;
+            two.Transitions['0'] = one;
+            two.Transitions['1'] = thre;
 
-            seenTwoOnes.Transitions['0'] = seenTwoOnes;
-            seenTwoOnes.Transitions['1'] = seenTwoOnes;
+            thre.Transitions['0'] = one;
+            thre.Transitions['1'] = finish;
+
+            finish.Transitions['0'] = finish;
+            finish.Transitions['1'] = finish;
         }
 
         public bool? Run(IEnumerable<char> s)
@@ -190,19 +200,15 @@ namespace fans
     {
         static void Main(string[] args)
         {
-            String s1 = "0111";
+            String s = "1110111";
             FA1 fa1 = new FA1();
-            bool? result1 = fa1.Run(s1);
+            bool? result1 = fa1.Run(s);
             Console.WriteLine(result1);
-
-            String s2 = "0001";
             FA2 fa2 = new FA2();
-            bool? result2 = fa2.Run(s2);
+            bool? result2 = fa2.Run(s);
             Console.WriteLine(result2);
-
-            String s3 = "1101";
             FA3 fa3 = new FA3();
-            bool? result3 = fa3.Run(s3);
+            bool? result3 = fa3.Run(s);
             Console.WriteLine(result3);
         }
     }
