@@ -180,19 +180,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/anton/.nuget/packages/": {}
+    "/Users/egorlogutov/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/anton/Desktop/NET/mod-task02-fa/fa/fa.csproj",
+      "projectUniqueName": "/Users/egorlogutov/Desktop/Github/mod-lab02-fa-csharp/fa/fa.csproj",
       "projectName": "fa",
-      "projectPath": "/Users/anton/Desktop/NET/mod-task02-fa/fa/fa.csproj",
-      "packagesPath": "/Users/anton/.nuget/packages/",
-      "outputPath": "/Users/anton/Desktop/NET/mod-task02-fa/fa/obj/",
+      "projectPath": "/Users/egorlogutov/Desktop/Github/mod-lab02-fa-csharp/fa/fa.csproj",
+      "packagesPath": "/Users/egorlogutov/.nuget/packages/",
+      "outputPath": "/Users/egorlogutov/Desktop/Github/mod-lab02-fa-csharp/fa/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/anton/.nuget/NuGet/NuGet.Config"
+        "/Users/egorlogutov/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
@@ -202,6 +202,7 @@
       },
       "frameworks": {
         "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
           "projectReferences": {}
         }
       },
@@ -209,10 +210,16 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
       "netstandard2.0": {
+        "targetAlias": "netstandard2.0",
         "dependencies": {
           "NETStandard.Library": {
             "suppressParent": "All",
@@ -227,11 +234,12 @@
           "net47",
           "net471",
           "net472",
-          "net48"
+          "net48",
+          "net481"
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.103/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.204/RuntimeIdentifierGraph.json"
       }
     }
   }
