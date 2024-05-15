@@ -15,62 +15,39 @@ namespace fans
 
     public class FA1
     {
-        public static State one = new State()
-        {
-            Name = "первое",
-            IsAcceptState = false,
-            Transitions = new Dictionary<char, State>()
-        };
-        public static State two = new State()
-        {
-            Name = "второе",
-            IsAcceptState = false,
-            Transitions = new Dictionary<char, State>()
-        };
-        public static State thre = new State()
-        {
-            Name = "третье",
-            IsAcceptState = false,
-            Transitions = new Dictionary<char, State>()
-        };
-        public static State four = new State()
-        {
-            Name = "четвертое",
-            IsAcceptState = true,
-            Transitions = new Dictionary<char, State>()
-        };
 
-        public static State finish = new State()
-        {
-            Name = "конечное",
-            IsAcceptState = true,
-            Transitions = new Dictionary<char, State>()
-        };
-
-        State InitialState = one;
+        private readonly State initialState;
 
         public FA1()
         {
+            var one = new State { Name = "первое", IsAcceptState = false, Transitions = new Dictionary<char, State>() };
+            var two = new State { Name = "второе", IsAcceptState = false, Transitions = new Dictionary<char, State>() };
+            var three = new State { Name = "третье", IsAcceptState = false, Transitions = new Dictionary<char, State>() };
+            var four = new State { Name = "четвертое", IsAcceptState = true, Transitions = new Dictionary<char, State>() };
+            var finish = new State { Name = "конечное", IsAcceptState = true, Transitions = new Dictionary<char, State>() };
 
             one.Transitions['0'] = two;
-            one.Transitions['1'] = thre;
+            one.Transitions['1'] = three;
 
             two.Transitions['0'] = four;
             two.Transitions['1'] = finish;
 
-            thre.Transitions['0'] = finish;
-            thre.Transitions['1'] = thre;
+            three.Transitions['0'] = finish;
+            three.Transitions['1'] = three;
 
             four.Transitions['0'] = four;
             four.Transitions['1'] = four;
 
             finish.Transitions['0'] = four;
             finish.Transitions['1'] = finish;
+
+            initialState = one;
+
         }
 
         public bool? Run(IEnumerable<char> s)
         {
-            State current = InitialState;
+            State current = initialState;
             return s.All(c => current.Transitions.ContainsKey(c)) && current.IsAcceptState? true : (bool?)null;
         }
     }
